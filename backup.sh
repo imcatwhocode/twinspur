@@ -32,11 +32,11 @@ log "Backing up..."
 if [ ! -z "$ENCRYPTION_PASSWORD" ]; then
   # It's OK to use GPG's "--passphrase" as we're inside the container
   # where passphrase can also be obtained from environment variables
-  tar --create --gzip -O $TAR_OPTS /data \
+  tar --create --gzip $TAR_OPTS -O /data \
     | gpg -q --passphrase $ENCRYPTION_PASSWORD --symmetric --batch \
     | aws --endpoint-url ${S3_ENDPOINT} $S3_OPTS s3 cp - s3://$S3_BUCKET/$S3_PATH/$(date -u +"%Y-%m-%dT%H:%M:%SZ").sql.gz.gpg
 else
-  tar --create --gzip -O $TAR_OPTS /data \
+  tar --create --gzip $TAR_OPTS -O /data \
     | aws --endpoint-url ${S3_ENDPOINT} $S3_OPTS s3 cp - s3://$S3_BUCKET/$S3_PATH/$(date -u +"%Y-%m-%dT%H:%M:%SZ").sql.gz || exit 2
 fi
 

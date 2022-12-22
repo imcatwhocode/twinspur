@@ -18,7 +18,7 @@ Features:
 | S3_ACCESS_KEY       | ✅       | -           | S3 Access key                                                                   |
 | S3_OPTS             | ❌       | -           | Additional opts for awscli                                                      |
 | WEBHOOK_START       | ❌       | -           | We'll make a GET query to this URL before backing up                            |
-| WEBHOOK_END         | ❌       | -           | Another GET query will be made to this URL after successful backup              |
+| WEBHOOK_SUCCESS     | ❌       | -           | Another GET query will be made to this URL after successful backup              |
 | ENCRYPTION_PASSWORD | ❌       | -           | Secret for GPG symmetric encryption                                             |
 | SCHEDULE            | ❌       | `**None**`  | Cron-ish schedule. If empty or `**None**`, single backup will start immediately |
 
